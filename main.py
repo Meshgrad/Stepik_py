@@ -1,12 +1,8 @@
-import calendar
 
-months = dict(zip(list(range(1, 13)), list(calendar.month_name)[1:]))
 
-try:
-    num = int(input())
+def add_to_list_in_dict(data, key, element):
     try:
-        print(months[num])
+        data[key].append(element)
     except KeyError:
-        print("Введено число из недопустимого диапазона")
-except ValueError:
-    print("Введено некорректное значение")
+        data[key] = [element]
+    
