@@ -1,8 +1,7 @@
 
 
-def add_to_list_in_dict(data, key, element):
-    try:
-        data[key].append(element)
-    except KeyError:
-        data[key] = [element]
-    
+try:
+    file = open(input(), 'r', encoding='utf-8')
+    print(file.read())
+except:
+    print("Файл не найден")
