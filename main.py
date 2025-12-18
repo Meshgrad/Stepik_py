@@ -1,10 +1,12 @@
-numbers = [6, 0, 36, 8, 2, 36, 0, 12, 60, 0, 45, 0, 3, 23]
+import calendar
 
-remainders = []
+months = dict(zip(list(range(1, 13)), list(calendar.month_name)[1:]))
 
-for number in numbers:
+try:
+    num = int(input())
     try:
-        remainders.append(36 % number)
-    except:
-        pass
-print(remainders)
+        print(months[num])
+    except KeyError:
+        print("Введено число из недопустимого диапазона")
+except ValueError:
+    print("Введено некорректное значение")
