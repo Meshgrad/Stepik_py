@@ -13,19 +13,29 @@ class DigitError(PasswordError):
 
 def is_good_password(string):
     try:
-        if len(string) < 9: raise LengthError
-        if not (string != string.lower() and string != string.upper() and not (any(x in punctuation for x in string))): raise LetterError
-        if not any(i.isdigit() for i in string): raise DigitError
-        
-    except LengthError:
-        raise
-    except LetterError:
-        raise
-    except DigitError:
-        raise 
-    
-    
-try:
-    print(is_good_password('!@#$%^&*()_+'))
-except Exception as err:
-    print(type(err))
+        string[8]
+    except IndexError:
+        raise LengthError
+
+    try:
+        list(filter(str.isupper, string))[0]
+        list(filter(str.islower, string))[0]
+    except IndexError:
+        raise LetterError
+
+    try:
+        list(filter(str.isdigit, string))[0]
+    except IndexError:
+        raise DigitError
+
+    return True
+
+while True:
+    try:
+        is_good_password(input())
+    except Exception as err:
+        print(err.__class__.__name__)
+    else:
+        print("Success!")
+        break
+
