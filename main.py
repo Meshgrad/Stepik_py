@@ -1,8 +1,6 @@
 
-
-def hundred(num):
-    if num <= 100:
-        print(num)
-        hundred(num + 1)
-hundred(1)
-
+def triangle(num):
+    if num > 0:
+        print(num * '*')
+        triangle(num - 1)    
+        
