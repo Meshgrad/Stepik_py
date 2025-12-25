@@ -1,11 +1,8 @@
 
 
-
-def sand_clock():
-    def st(num, step):
-        print(f'{str(step) * num}'.center(16))
-        if step < 4:
-            st(num - 4, step + 1)
-            print(f'{str(step) * num}'.center(16))  
-    st(16, 1)
-sand_clock()
+def print_digits(number):
+    new_num = str(number)
+    print(new_num[-1])
+    if len(new_num) > 1:
+        print_digits(int(new_num[:-1]))
+print_digits(12345)
