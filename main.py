@@ -1,8 +1,5 @@
 
 
-def number_of_frogs(year):
-    if year == 1:
-        return 77
-    return 3*(number_of_frogs(year - 1) - 30)
-
-print(number_of_frogs(10))
+def get_pow(a, n):
+    
+print(range_sum([1, 2, 3, 4, 5, 6, 7, 8, 9], 0, 8))
