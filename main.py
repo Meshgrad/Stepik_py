@@ -1,8 +1,10 @@
 
 
-def print_digits(number):
-    new_num = str(number)
-    print(new_num[-1])
-    if len(new_num) > 1:
-        print_digits(int(new_num[:-1]))
-print_digits(12345)
+def recurs(num):
+    res = 0
+    if len(num) == 1:
+        return 1
+    else:
+        return 1 + recurs(num[1:])
+    
+print(recurs(input()))
