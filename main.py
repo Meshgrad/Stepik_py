@@ -1,5 +1,9 @@
 
 
-def get_pow(a, n):
-    
-print(range_sum([1, 2, 3, 4, 5, 6, 7, 8, 9], 0, 8))
+def get_fast_pow(a, n):
+    if n == 0:
+        return 1
+    if n % 2 == 1:
+        return a * get_fast_pow(a, n - 1)
+    return get_fast_pow(a * a, n // 2)
+print(get_fast_pow(2, 10))
