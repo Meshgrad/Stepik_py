@@ -1,12 +1,12 @@
 
 
 def is_power(number):
-    if a == 0 and b == 0:
-        return 0
-    elif b == 0:
-        return 1 + recursive_sum(a - 1, 0)
+    if number < 2:
+        if number == 1:
+            return True
+        else:
+            return False
     else:
-        return 1 + recursive_sum(a, b - 1 )
+        return is_power(number / 2)
 
-
-print(recursive_sum(0, 78))
+print(is_power(512))
