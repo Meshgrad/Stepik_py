@@ -1,9 +1,12 @@
 
 
-def get_fast_pow(a, n):
-    if n == 0:
-        return 1
-    if n % 2 == 1:
-        return a * get_fast_pow(a, n - 1)
-    return get_fast_pow(a * a, n // 2)
-print(get_fast_pow(2, 10))
+def is_power(number):
+    if a == 0 and b == 0:
+        return 0
+    elif b == 0:
+        return 1 + recursive_sum(a - 1, 0)
+    else:
+        return 1 + recursive_sum(a, b - 1 )
+
+
+print(recursive_sum(0, 78))
