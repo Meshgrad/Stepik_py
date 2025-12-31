@@ -1,9 +1,8 @@
-def is_palindrome(string):
-    if string == '' or len(string) == 1:
-        return True
-    if string[0] != string [-1]:
-        return False
+def to_binary(number):
+    if int(number) == 0:
+        return 0
+    elif int(number) == 1:
+        return 1
     else:
-        return is_palindrome(string[1:-1])
+        return str(to_binary((number) // 2)) + str(int(number) % 2)
         
-print(is_palindrome('122333221'))
