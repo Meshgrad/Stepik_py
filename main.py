@@ -1,16 +1,31 @@
 
-def get_value(nested_dicts, key):
-    if key in nested_dicts:
-        return nested_dicts[key]                # базовый случай
-    
-    for v in nested_dicts.values():
-        if type(v) == dict:
-            value = get_value(v, key)    # рекурсивный случай
-            if value is not None:
-                return value 
-    
+def get_all_values(nested_dicts, key):
+    total = set()
+    def rec(nested_dicts, key):
+        if type(nested_dicts) == dict and key in nested_dicts:
+            total.add(nested_dicts[key])
+        if type(nested_dicts) == dict:
             
-data = {'first_name': 'Alyson', 'last_name': 'Hannigan', 'birthday': {'day': 24, 'month': 'March', 'year': 1974}}
-
-print(get_value(data, 'birthday'))
+            for v in nested_dicts.values():
+                value = rec(v, key)
+                #total.update(value)
+                #return total
+    rec(nested_dicts, key)
+    return total
     
+my_dict = {
+           'Arthur': {'hobby': 'videogames', 'drink': 'cacao'}, 
+           'Timur': {'hobby': 'math'},
+           'Dima': {
+                   'hobby': 'CS',
+                   'sister':
+                       {
+                         'name': 'Anna',
+                         'hobby': 'TV',
+                         'age': 14
+                       }
+                   }
+           }
+
+result = get_all_values(my_dict, 'hobby')
+print(*sorted(result))
