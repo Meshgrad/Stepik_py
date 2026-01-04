@@ -1,11 +1,7 @@
+names = ['Moana', 'Cars', 'Zootopia', 'Ratatouille', 'Coco', 'Inside Out', 'Finding Nemo', 'Frozen']
+budgets = [150000000, 120000000, 150000000, 150000000, 180000000, 175000000, 94000000, 150000000]
+box_offices = [643331111, 462216280, 1023784195, 620702951, 807082196, 857611174, 940335536, 1280802282]
 
 
-def custom_isinstance(objects, typeinfo):
-    count  = 0
-    for i in objects:
-        if isinstance(i, typeinfo):
-            count += 1
-    return count
 
-numbers = [1, 'two', 3.0, 'четыре', 5, 6.0]
-print(custom_isinstance(numbers, (int, float)))
+
