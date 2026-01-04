@@ -1,7 +1,11 @@
 
 
-def is_greater(lists, number):
-    return any([x > number for x in list(map(sum, lists))])
-data = [[0, 0, 1], [0, 1, 0], [1, 0, 0]]
+def custom_isinstance(objects, typeinfo):
+    count  = 0
+    for i in objects:
+        if isinstance(i, typeinfo):
+            count += 1
+    return count
 
-print(is_greater(data, 2))
+numbers = [1, 'two', 3.0, 'четыре', 5, 6.0]
+print(custom_isinstance(numbers, (int, float)))
