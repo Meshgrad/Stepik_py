@@ -1,6 +1,11 @@
 
 
-def convert(number):
-    return (format(number, 'b'), '%o' % number, '%X' % number)
+def custom_isinstance(objects, typeinfo):
+    count  = 0
+    for i in objects:
+        if isinstance(i, typeinfo):
+            count += 1
+    return count
 
-print(convert(-24))
+numbers = [1, 'two', 3.0, 'четыре', 5, 6.0]
+print(custom_isinstance(numbers, (int, float)))
