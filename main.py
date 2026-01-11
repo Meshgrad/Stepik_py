@@ -1,28 +1,10 @@
-from functools import wraps
+from functools import lru_cache
 
-
-class MaxRetriesException(Exception):
-    pass
-
-
-def retry(times: int):
-    def decorator(func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            for i in range(times):
-                try:
-                    return func(*args, **kwargs)
-                except:
-                    pass
-            raise MaxRetriesException
-        return wrapper
-    return decorator
+@lru_cache
+def ways(n):
+    if n <= 3: return 1
+    elif n == 4: return 2
+    else:
+        return ways(n - 1) + ways(n - 3) + ways(n - 4)
     
-@retry(3)
-def no_way():
-    raise ValueError
-   
-try:
-    no_way()
-except Exception as e:
-    print(type(e))
+print(ways(5))
