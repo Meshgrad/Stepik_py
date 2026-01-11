@@ -1,7 +1,28 @@
+from functools import wraps
 
 
-def matrix_to_dict(matrix: list[list[int | float]], ) -> dict[int, list[int | float]]:
-    return {idx: value for idx, value in enumerate(matrix, 1)}
-annotations = matrix_to_dict.__annotations__
+class MaxRetriesException(Exception):
+    pass
 
-print(annotations['return'])
+
+def retry(times: int):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            for i in range(times):
+                try:
+                    return func(*args, **kwargs)
+                except:
+                    pass
+            raise MaxRetriesException
+        return wrapper
+    return decorator
+    
+@retry(3)
+def no_way():
+    raise ValueError
+   
+try:
+    no_way()
+except Exception as e:
+    print(type(e))
