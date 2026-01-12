@@ -1,10 +1,11 @@
-from functools import lru_cache
 
-@lru_cache
-def ways(n):
-    if n <= 3: return 1
-    elif n == 4: return 2
+
+def filterfalse(predicate, iterable):
+    if predicate != None:
+        return filter(lambda x:  not predicate(x), iterable)
     else:
-        return ways(n - 1) + ways(n - 3) + ways(n - 4)
-    
-print(ways(5))
+        return filter(lambda x:  not bool(x), iterable)
+
+numbers = (1, 2, 3, 4, 5)
+
+print(*filterfalse(lambda x: x % 2 == 0, numbers))
